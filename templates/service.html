@@ -1,0 +1,60 @@
+{% load bootstrap5 %}
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Service page</h1>
+    <div>
+      <form method="get">
+        <input type="text" name="servicename" value="" />
+        <input type="submit" value="Search" />
+      </form>
+    </div>
+    <div>
+      {% for service in servicesData %}
+      <ul>
+        <li>
+          <a href="/servicedetail/{{service.service_slug}}"
+            >{{service.service_icon}}</a
+          >
+        </li>
+        <li>{{service.service_title}}</li>
+        <li>{{service.service_des}}</li>
+      </ul>
+      {% empty %} No data found {% endfor %}
+    </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="/service/?page=1" tabindex="-1">First</a>
+        </li>
+        {% if servicesData.has_previous %}
+        <li class="page-item">
+          <a
+            class="page-link"
+            href="/service/?page={{servicesData.previous_page_number}}"
+            >Previous</a
+          >
+        </li>
+        {% endif %}
+        {% for n in totalPagelist %}
+        <li class="page-item">
+          <a class="page-link" href="/service/?page={{n}}">{{n}}</a>
+        </li>
+        {% endfor %}
+        {% if servicesData.has_next %}
+        <li class="page-item">
+          <a
+            class="page-link"
+            href="/service/?page={{servicesData.next_page_number}}"
+            >Next</a
+          >
+        </li>
+        {% endif %}
+        <li class="page-item">
+            <a class="page-link" href="/service/?page={{lastPage}}">Last Page</a>
+          </li>
+      </ul>
+    </nav>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>My Clculator</h1>
+    <div>
+      <form method="post">
+        {% csrf_token %}
+        <label>Subject 1</label>
+        <input type="text" name="num1" /><br /><br />
+        <label>Subject 2</label>
+        <input type="text" name="num2" />
+        <br /><br />
+        <label>Subject 3</label>
+        <input type="text" name="num3" />
+        <br /><br />
+        <label>Subject 4</label>
+        <input type="text" name="num4" />
+        <br /><br />
+        <label>Subject 5</label>
+        <input type="text" name="num5" />
+        <br /><br />
+        <button type="submit">Marksheet</button><br /><br />
+        <label>Total</label>
+        <input type="text" value="{{total}}" />
+        <br /><br />
+        <label>Percentage</label>
+        <input type="text" value="{{per}}" />
+        <br /><br />
+        <label>Division</label>
+        <input type="text" value="{{div}}" />
+      </form>
+    </div>
+  </body>
+</html>
